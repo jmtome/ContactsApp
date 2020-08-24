@@ -73,7 +73,7 @@ class RootTableCell: UITableViewCell {
         return lbl
     }()
     private let userThumbnail : UIImageView = {
-        let imgView = UIImageView(image: UIImage(systemName: "star.fill"))
+        let imgView = UIImageView(image: UIImage(named: "userSmall"))
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -129,5 +129,3 @@ extension RootTableCell {
         backgroundColor = .secondarySystemGroupedBackground
     }
 }
-
-//Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>

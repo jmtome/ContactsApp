@@ -39,6 +39,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Contacts"
+        setupActivityIndicator()
     }
     
 }
@@ -91,6 +92,17 @@ extension RootViewController: UITableViewDelegate {
 //MARK: - Private Methods
 extension RootViewController {
     
+    //Setup Activity Indicator
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        tableView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -150).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.startAnimating()
+        }
+    }
     //Setup TableView
     private func setupTableView() {
         tableView.delegate = self
@@ -100,12 +112,9 @@ extension RootViewController {
         self.refreshControl.addTarget(self, action: #selector(refreshTableView(_:)), for: .valueChanged)
     }
     
+    //Pull to refresh action
     @objc private func refreshTableView(_ sender: UIRefreshControl) {
         viewModelSetupAndFetch()
-        //Show the spinner for a short while
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.refreshControl.endRefreshing()
-        }
     }
     
     // Initial page settings
@@ -113,29 +122,40 @@ extension RootViewController {
         //whenever the update closure is triggered inside the ContactsViewModel class, the tableview will be reloaded
         if viewModel.update == nil {
             viewModel.update = {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                DispatchQueue.main.async { [weak self] in
+                    //if it is animating, stop
+                    self?.refreshControl.endRefreshing()
+                    self?.activityIndicator.stopAnimating()
+                    //reload tableview
+                    self?.tableView.reloadData()
                 }
             }
         }
+        //If the viewModel is empty, we fetch it, otherwise
         if viewModel.isEmpty {
             viewModel.populateViewModel { success in
                 if !success {
                     //there was a network error
                     //show an action sheet telling the user to fix internet and pull to refresh
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                         let ac = UIAlertController(title: "No connection", message: "Please fix internet and pull to refresh", preferredStyle: .alert)
                         let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
                         ac.addAction(action)
                         
-                        self.present(ac, animated: true, completion: nil)
+                        self?.present(ac, animated: true, completion: nil)
+                        //if I try to stop the spinners for network error these in another order I get UI problems, either the spinners dont show or show longer
+                        self?.refreshControl.endRefreshing()
+                        self?.activityIndicator.stopAnimating()
                     }
                 }
             }
-            
-        }
+        } else {
+            //if here, that means there was a pull to refresh but that the viewModel isnt empty so, spinner is stopped
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.refreshControl.endRefreshing()
+            }
+        } 
     }
-    
     //MARK: DataSource method to create cells
     private func createCellForViewModel(at indexPath: IndexPath) -> RootTableCell {
         
