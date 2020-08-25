@@ -4,6 +4,12 @@ Programming challenge used to assess skill level and problem-solving abilities.
 
 ## Developer Comments
 
+### At the end of this Markdown can be found a  GIF with the app functioning showing:
+
+    No Internet-> Failed Fetch -> Internet Connection -> Successful Fetch 
+
+With the corresponding Activity Indicators
+
 ### Development settings:
 
 - [x] - **IDE:** Xcode 11.6
@@ -22,7 +28,13 @@ Programming challenge used to assess skill level and problem-solving abilities.
 
 - [x] - App Icon Maker: [`https://appicon.co/`](https://appicon.co/)
 
-## Overview
+### Added Extra UI Features 
+
+- [x] - Activity spinner to indicate initial network activity
+- [x] - Pull to refresh in case internet is not working.
+
+
+## Challenge Overview
 
 Create an app that fetches JSON from the URL below and displays the results as shown in the screenshots on the next page. Your app should match the layout and formatting in the screenshots as closely as possible. (Colors and fonts do not need to be exact.) Please use the image assets provided.
 
@@ -65,3 +77,8 @@ https://s3.amazonaws.com/technical-challenge/v3/contacts.json
 - [x] - Use the latest non-beta version of your platform’s IDE (Xcode, Android Studio, etc.). - You only need to support the latest OS version of your platform.
 
 - [x] - When you send your project back to your K+C recruiter, please outline the steps necessary to build and run your project.
+
+# Video
+
+
+<img src="Video.gif" width="500"/>

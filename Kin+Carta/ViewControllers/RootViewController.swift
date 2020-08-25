@@ -41,7 +41,6 @@ class RootViewController: UIViewController {
         navigationItem.title = "Contacts"
         setupActivityIndicator()
     }
-    
 }
 
 //MARK: - TableView DataSource Methods
@@ -151,8 +150,8 @@ extension RootViewController {
             }
         } else {
             //if here, that means there was a pull to refresh but that the viewModel isnt empty so, spinner is stopped
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.refreshControl.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                self?.refreshControl.endRefreshing()
             }
         } 
     }
