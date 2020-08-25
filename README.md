@@ -8,7 +8,11 @@ Programming challenge used to assess skill level and problem-solving abilities.
 
     No Internet-> Failed Fetch -> Internet Connection -> Successful Fetch 
 
-With the corresponding Activity Indicators
+With the corresponding Activity Indicators. 
+
+### Note :
+
+​	The simulation shown in the video was made using a 1Mbps network to be able to visualize the slow progression in the loading of the images from server.
 
 ### Development settings:
 
@@ -23,7 +27,7 @@ With the corresponding Activity Indicators
 - [x] - Simply Start  ``` Kin+Carta.xcodeproj ```  project and **Build/Run**
 
 ### Attributions
-  
+
 - [x] - AppIcon:   [`Flat Icon ContactBook`](https://www.flaticon.com/free-icon/notebook_784856?term=address%20book&page=1&position=17)
 
 - [x] - App Icon Maker: [`https://appicon.co/`](https://appicon.co/)
@@ -79,6 +83,5 @@ https://s3.amazonaws.com/technical-challenge/v3/contacts.json
 - [x] - When you send your project back to your K+C recruiter, please outline the steps necessary to build and run your project.
 
 # Video
-
 
 <img src="Video.gif" width="500"/>
