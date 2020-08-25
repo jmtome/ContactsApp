@@ -7,6 +7,6 @@
 //
 
 enum RootViewSections: String, CaseIterable {
-    case Favorites = "Favorites"
+    case Favorites = "Favorite Contacts"
     case OtherContacts = "Other Contacts"
 }

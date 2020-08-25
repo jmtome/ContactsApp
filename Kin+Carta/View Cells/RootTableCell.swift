@@ -1,6 +1,6 @@
 //
 //  UserCell.swift
-//  SampleApp
+//  Kin+Carta
 //
 //  Created by Juan Manuel Tome on 10/08/2020.
 //  Copyright © 2020 Juan Manuel Tome. All rights reserved.
@@ -111,7 +111,7 @@ extension RootTableCell {
         userThumbnail.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         
         isFavorite.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        isFavorite.leadingAnchor.constraint(equalTo: userThumbnail.trailingAnchor, constant: 20).isActive = true
+        isFavorite.leadingAnchor.constraint(equalTo: userThumbnail.trailingAnchor, constant: 30).isActive = true
         
         let constraint: NSLayoutConstraint!
         constraint = NSLayoutConstraint(item: isFavorite, attribute: .centerY, relatedBy: .equal, toItem: userLabel, attribute: .centerY, multiplier: 1, constant: 0)
@@ -125,7 +125,7 @@ extension RootTableCell {
         ])
         
         //Set accessory type
-        accessoryType = .disclosureIndicator
+//        accessoryType = .disclosureIndicator
         backgroundColor = .secondarySystemGroupedBackground
     }
 }

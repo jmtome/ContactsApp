@@ -6,8 +6,6 @@
 //  Copyright © 2020 Juan Manuel Tome. All rights reserved.
 //
 
-
-
 import UIKit
 
 class RootViewController: UIViewController {
