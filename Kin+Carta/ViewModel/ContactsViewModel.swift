@@ -42,8 +42,9 @@ class ContactsViewModel {
     var update: (() -> ())?
 
     //MARK: - Public Methods
-    func populateViewModel(completion: ((Bool)->Void)? = nil) {
-        NetworkManager.shared.fetchRequest(with: Constants.contactsURL) { [weak self ] (result: Result<[Contact], NetworkError>) in
+    
+    func populateViewModel(completion: ((Bool)-> Void)? = nil ) {
+        NetworkManager.shared.JSONFetchRequest(with: Constants.contactsURL) { [weak self] (result: Result<[Contact], NetworkError>) in
             switch result {
             case .success(let contacts):
                 self?.contacts = contacts.sorted { $0.name < $1.name }
@@ -55,6 +56,7 @@ class ContactsViewModel {
             }
         }
     }
+    
     //TODO: - Gets model for indexpath,
     //this method should probably go in the datasource, in the same place as the indexPath that it's called with, but for now i will leave it here.
     func getModel(for indexPath: IndexPath) -> ContactViewModel {

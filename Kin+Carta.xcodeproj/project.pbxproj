@@ -69,14 +69,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C8351B5424F1E035007FAEB5 /* View Cells */ = {
+		C8351B5424F1E035007FAEB5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				C8FB19C624F176E900C52321 /* RootTableCell.swift */,
 				C8FB19CC24F1B70600C52321 /* UserProfileCell.swift */,
 				C8FB19CE24F1BE7600C52321 /* UserInfoCell.swift */,
 			);
-			path = "View Cells";
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C84CB96224FEDCEC00683C73 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				C852D15324F06BE7001F56BD /* ImageCache.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
+		C8525F6124FED43400A264C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8FB19D424F1DF4E00C52321 /* ViewControllers */,
+				C8351B5424F1E035007FAEB5 /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C852D11B24F04DF3001F56BD = {
@@ -100,11 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				C852D14324F059D4001F56BD /* Model */,
-				C8351B5424F1E035007FAEB5 /* View Cells */,
+				C8525F6124FED43400A264C4 /* View */,
 				C8FB19D324F1DF3600C52321 /* ViewModel */,
-				C8FB19D424F1DF4E00C52321 /* ViewControllers */,
-				C8FB19D224F1DE8C00C52321 /* Extensions */,
+				C84CB96224FEDCEC00683C73 /* ImageCache */,
 				C852D14524F059D4001F56BD /* NetworkManager */,
+				C8FB19D224F1DE8C00C52321 /* Extensions */,
 				C8B00CA724F32AF70046810A /* Support Files */,
 				C852D13024F04DF5001F56BD /* Assets.xcassets */,
 				C852D13224F04DF5001F56BD /* LaunchScreen.storyboard */,
@@ -116,7 +133,6 @@
 		C852D14324F059D4001F56BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C852D15324F06BE7001F56BD /* ImageCache.swift */,
 				C852D14424F059D4001F56BD /* Contact.swift */,
 				C8B6535124F44F3D002E9354 /* Country.swift */,
 				C8B6534F24F44F2E002E9354 /* Address.swift */,
