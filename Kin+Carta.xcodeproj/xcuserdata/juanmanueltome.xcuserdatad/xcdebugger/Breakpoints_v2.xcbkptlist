@@ -16,5 +16,121 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85A571AD-7065-4261-A6BB-E6DD637E9A7F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kin+Carta/NetworkManager/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "genericRequest(with:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "345FB72E-04F4-414E-B59A-50574B9955F2"
+            shouldBeEnabled = "Yes"
+            condition = "url == &quot;https://s3.amazonaws.com/technical-challenge/v3/images/scooby-doo-large.jpeg&quot;"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kin+Carta/ImageCache/ImageCache.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "loadImage(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A8D0ACB-AEFB-4790-8224-6B1FD1CE3FA0"
+            shouldBeEnabled = "No"
+            condition = "url == &quot;https://s3.amazonaws.com/technical-challenge/v3/images/scooby-doo-large.jpeg&quot;"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kin+Carta/View/Cells/UserProfileCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "cellViewModel"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3A8D0ACB-AEFB-4790-8224-6B1FD1CE3FA0 - cfd674f30551d1ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Kin_Carta.UserProfileCell.cellViewModel.didset : Swift.Optional&lt;Kin_Carta.ContactViewModel&gt;"
+                  moduleName = "Kin+Carta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juanmanueltome/Documents/Kin+Carta/Kin+Carta/View/Cells/UserProfileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "1537">
+               </Location>
+               <Location
+                  uuid = "3A8D0ACB-AEFB-4790-8224-6B1FD1CE3FA0 - c644076b1e4986fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;__C.UIImage, Swift.Error&gt;) -&gt; () in Kin_Carta.UserProfileCell.cellViewModel.didset : Swift.Optional&lt;Kin_Carta.ContactViewModel&gt;"
+                  moduleName = "Kin+Carta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/juanmanueltome/Documents/Kin+Carta/Kin+Carta/View/Cells/UserProfileCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "277">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "77651002-8935-4E27-8E89-CCAA146B1670"
+            shouldBeEnabled = "Yes"
+            condition = "url == &quot;https://s3.amazonaws.com/technical-challenge/v3/images/scooby-doo-large.jpeg&quot;"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kin+Carta/View/Cells/UserProfileCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "cellViewModel"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E97D39ED-60BC-4279-85A0-3EA20DBA44D9"
+            shouldBeEnabled = "Yes"
+            condition = "url == &quot;https://s3.amazonaws.com/technical-challenge/v3/images/scooby-doo-large.jpeg&quot;"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Kin+Carta/View/Cells/RootTableCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewModel"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

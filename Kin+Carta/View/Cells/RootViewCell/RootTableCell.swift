@@ -27,11 +27,14 @@ class RootTableCell: UITableViewCell {
                     }
                 case .failure(let error):
                     print(error)
+                    DispatchQueue.main.async {
+                        self.userThumbnail.image = ImageCache.placeHolderImage
+                    }
                 }
             }
         }
     }
- 
+    
     //MARK: - Cell Life Cycle Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -92,7 +95,7 @@ class RootTableCell: UITableViewCell {
         stackView.tintColor = UIColor(named: "Color2")
         return stackView
     }()
-
+    
 }
 
 //MARK: - Private Cell Methods
@@ -125,7 +128,7 @@ extension RootTableCell {
         ])
         
         //Set accessory type
-//        accessoryType = .disclosureIndicator
+        //        accessoryType = .disclosureIndicator
         backgroundColor = .secondarySystemGroupedBackground
     }
 }

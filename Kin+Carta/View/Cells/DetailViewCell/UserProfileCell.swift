@@ -9,7 +9,7 @@
 import UIKit
 
 class UserProfileCell: UITableViewCell {
-
+    
     //MARK: Properties
     //Each UserProfileCell gets populated with a viewModel provided by the DetailView
     var cellViewModel: ContactViewModel! {
@@ -27,6 +27,9 @@ class UserProfileCell: UITableViewCell {
                     }
                 case .failure(let error):
                     print("error is \(error)")
+                    DispatchQueue.main.async {
+                        self.userThumbnail.image = ImageCache.placeHolderImage
+                    }
                 }
             }  
         }

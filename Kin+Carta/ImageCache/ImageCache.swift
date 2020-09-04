@@ -11,7 +11,7 @@ import UIKit
 
 class ImageCache {
     static let cache = ImageCache()
-    static let placeHolderImage = UIImage(named: "userSmall")!
+    static let placeHolderImage = UIImage(named: "userLarge")!
     private let cachedImages = NSCache<NSString, UIImage>()
     
     
@@ -22,7 +22,7 @@ class ImageCache {
     // 
     func loadImage(from url: String, completion: @escaping(Result<UIImage,Error>) -> Void) {
         if let catchedImage = image(from: url) {
-            print("returning image cache for url \(url)")
+//            print("returning image cache for url \(url)")
             completion(.success(catchedImage))
             return
         }
@@ -32,12 +32,14 @@ class ImageCache {
                 if let image = UIImage(data: data) {
                     self.cachedImages.setObject(image, forKey: url as NSString)
                     completion(.success(image))
-                } else {
-                    self.cachedImages.setObject(ImageCache.placeHolderImage, forKey: url as NSString)
-                    completion(.success(ImageCache.placeHolderImage))
                 }
             case .failure(let error):
+                print(error)
                 completion(.failure(error))
+                //Everytime it cant load an image, it wont set its cache, therefore it will try again to load it next time the cell is reloaded, here it propagates the error with the completion handler, and the Cells catch it and assign a placeholder image
+                //old code below, would, once the url failed, assign a permanent placeholder,
+//                self.cachedImages.setObject(ImageCache.placeHolderImage, forKey: url as NSString)
+//                completion(.success(ImageCache.placeHolderImage))
             }
         }
     }

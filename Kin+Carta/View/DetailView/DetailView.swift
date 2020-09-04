@@ -1,91 +1,65 @@
 //
-//  DetailViewController.swift
+//  DetailView.swift
 //  Kin+Carta
 //
-//  Created by Juan Manuel Tome on 22/08/2020.
+//  Created by Juan Manuel Tome on 03/09/2020.
 //  Copyright © 2020 Juan Manuel Tome. All rights reserved.
 //
 
 import UIKit
 
-class DetailViewController: UIViewController {
+//MARK: - RootViewDelegate Protocol
+protocol DetailViewDelegate: class {
+    func setupNavBar(from view: UIView)
+}
+
+class DetailView: UIView {
+    //MARK: - Delegate
+    weak var delegate: DetailViewDelegate?
     
     //TableView Reuse Identifiers
     let userProfileMainID = "userProfileCellID"
     let userInfoCellID = "userInfoCellID"
     
     //UI Elements
-    var tableView: UITableView!
+    var tableView: UITableView! = UITableView(frame: .zero, style: .plain)
     
-    //Data Source
+    //MARK: - ViewModel Property
     var viewModel: ContactViewModel! {
         didSet {
-            setupNavBar()
+            delegate?.setupNavBar(from: self)
         }
     }
     
-    //MARK: - View Controller Life-cycle methods
-    override func loadView() {
-        super.loadView()
-        tableView = UITableView(frame: .zero, style: .plain)
-        
-        view = tableView
-        
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupTableView()
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()    
-    }
-}
-
-//MARK: - TableView DataSource Methods
-extension DetailViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.propertyDictionary.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return createCellForDetail(at: indexPath)
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-}
-
-//MARK: - TableView Delegate Methods
-extension DetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 //MARK: - Private Methods
-extension DetailViewController {
-    //Set up navigation bar
-    private func setupNavBar() {
-        if viewModel.isFavorite {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favoriteFill"), style: .plain, target: self, action: #selector(toggleFavorite(_:)))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favoriteEmpty"), style: .plain, target: self, action: #selector(toggleFavorite(_:)))
-        }
-    }
-    //Toggle favorites
-    @objc private func toggleFavorite(_ sender: UIBarButtonItem) {
-        if viewModel.isFavorite {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favoriteEmpty"), style: .plain, target: self, action: #selector(toggleFavorite(_:)))
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "favoriteFill"), style: .plain, target: self, action: #selector(toggleFavorite(_:)))
-        }
-        viewModel.isFavorite.toggle()
-    }
-    //Setup the TableView
+extension DetailView {
+    //MARK: - Setup TableView
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UserProfileCell.self, forCellReuseIdentifier: userProfileMainID)
         tableView.register(UserInfoCell.self, forCellReuseIdentifier: userInfoCellID)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "userid")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(tableView)
+        NSLayoutConstraint.activate( [
+            tableView.topAnchor.constraint(equalTo: topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
     }
-    
     //MARK: DataSource method to create cells
     private func createCellForDetail(at indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
@@ -97,7 +71,6 @@ extension DetailViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: userInfoCellID, for: indexPath) as! UserInfoCell
-           
             //The property dictionary lists the available properties to display that arent nil
             //get the property to the corresponding cell (property 0 is name but that is handled in another case)
             let property = viewModel.propertyDictionary[indexPath.row]
@@ -117,5 +90,24 @@ extension DetailViewController {
             
             return cell
         }
+    }
+}
+//MARK: - TableView DataSource Methods
+extension DetailView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.propertyDictionary.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return createCellForDetail(at: indexPath)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+}
+
+//MARK: - TableView Delegate Methods
+extension DetailView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
